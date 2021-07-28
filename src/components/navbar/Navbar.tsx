@@ -24,6 +24,9 @@ const Navbar = () => {
         <Link className="nav-link" to="/games">
           Games
         </Link>
+        <Link className="nav-link" to="/games/1">
+          Details
+        </Link>
       </div>
 
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
