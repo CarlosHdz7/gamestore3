@@ -15,27 +15,28 @@ const Navbar = () => {
         <button type="button" className="side-button" onClick={showSideBar}>
           <i className="bi bi-list" />
         </button>
+        <div className="navbar-container-options">
+          <Link className="navbar-container-item" to="/">
+            GameStore
+          </Link>
+          <div>
+            <Link className="navbar-container-item" to="/games">
+              Games
+            </Link>
+            <Link className="navbar-container-item" to="/login">
+              Login
+            </Link>
+          </div>
+        </div>
 
-        <Link className="nav-link" to="/">
-          Home
-        </Link>
-        <Link className="nav-link" to="/login">
-          Login
-        </Link>
-        <Link className="nav-link" to="/games">
-          Games
-        </Link>
-        <Link className="nav-link" to="/games/1">
-          Details
-        </Link>
       </div>
 
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-        <ul className="nav-menu-items">
-          <li role="button" tabIndex={0} className="nav-text" onClick={showSideBar}>
-            <i className="bi bi-x-lg" />
-          </li>
 
+        <ul className="nav-menu-items">
+          <button type="button" className="nav-text--button" onClick={showSideBar}>
+            <i className="bi bi-x-lg" />
+          </button>
           {SideBarOptions.map((item) => (
             <li className="nav-text">
               <Link to={item.path}>

@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from 'react-router-dom';
 import Navbar from '../navbar';
 import details from '../pages/details';
@@ -20,6 +21,8 @@ const AppRouter = () => (
           <Route exact path="/games" component={games} />
           <Route exact path="/games/:id" component={details} />
           <Route exact path="/" component={Home} />
+
+          <Redirect to="/" />
         </Switch>
       </div>
     </>
