@@ -2,10 +2,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SideBarOptions from './SidebarOptions';
 import './Navbar.scss';
 
 const Navbar = () => {
-  const [sidebar, setSideBar] = useState(false);
+  const [sidebar, setSideBar] = useState<boolean>(false);
   const showSideBar = () => setSideBar(!sidebar);
 
   return (
@@ -34,24 +35,16 @@ const Navbar = () => {
           <li role="button" tabIndex={0} className="nav-text" onClick={showSideBar}>
             <i className="bi bi-x-lg" />
           </li>
-          <li className="nav-text">
-            <Link to="/">
-              <i className="bi bi-house-fill" />
-              <span>Home</span>
-            </Link>
-          </li>
-          <li className="nav-text">
-            <Link to="/login">
-              <i className="bi bi-person-fill" />
-              <span>Login</span>
-            </Link>
-          </li>
-          <li className="nav-text">
-            <Link to="/games">
-              <i className="bi bi-joystick" />
-              <span>Games</span>
-            </Link>
-          </li>
+
+          {SideBarOptions.map((item) => (
+            <li className="nav-text">
+              <Link to={item.path}>
+                <i className={item.icon} />
+                <span>{item.title}</span>
+              </Link>
+            </li>
+          ))}
+
         </ul>
       </nav>
     </>
