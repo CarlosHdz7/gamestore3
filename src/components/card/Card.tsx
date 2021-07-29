@@ -12,7 +12,7 @@ const Card = ({ game }: {game: IGame}) => (
     <div className="card-img-container">
       <img
         className="card-img"
-        // src={game.cover_art || '/images/not-found.png'}
+        src={game.cover_art?.url || '/images/not-found.png'}
         alt=""
       />
     </div>

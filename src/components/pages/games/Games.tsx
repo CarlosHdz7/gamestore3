@@ -6,7 +6,6 @@ import './Games.scss';
 
 const Games = () => {
   const { isLoading, apiData: games } = useFetchGames();
-  console.log(games);
 
   return (
     <div className="cards-container">

@@ -9,11 +9,13 @@ class Helpers {
   static async getGames() {
     const url = '/games';
     const data = await singleton.getData(url, 'A error has ocurred while loading video games information.');
-    const games = data.map((game: IGame) => ({
+    const games = data.map((game: IGame): IGame => ({
       id: game.id,
       name: game.name,
       price: game.price,
-      // cover_art: game.cover_art.url,
+      cover_art: {
+        url: game.cover_art?.url,
+      },
     }));
     return games;
   }

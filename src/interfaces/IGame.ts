@@ -1,9 +1,12 @@
 /* eslint-disable camelcase */
-interface IGame{
+export interface IGame {
   id: number;
   name: string;
-  price: number;
-  url: string
+  price: string;
+  cover_art: ICoverArt | undefined;
 }
 
+export interface ICoverArt {
+  url: string | undefined;
+}
 export default IGame;

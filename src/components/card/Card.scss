@@ -5,6 +5,8 @@
   width: 180px;
   margin-bottom: 20px;
   box-shadow: $shadow;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .card:hover {
@@ -14,7 +16,7 @@
 .card-img-container {
   width: 100%;
   height: 200px;
-  background-color: $purple-color;
+  background-color: $dark-purple-color;
 }
 
 .card-img {
