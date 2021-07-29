@@ -13,7 +13,7 @@ class Helpers {
       id: game.id,
       name: game.name,
       price: game.price,
-      // url: game['cover_art'],
+      // cover_art: game.cover_art.url,
     }));
     return games;
   }

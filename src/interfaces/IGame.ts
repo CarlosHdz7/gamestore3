@@ -1,8 +1,9 @@
+/* eslint-disable camelcase */
 interface IGame{
   id: number;
   name: string;
   price: number;
-  // url?: string;
+  url: string
 }
 
 export default IGame;

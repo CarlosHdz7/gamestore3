@@ -1,15 +1,18 @@
 import React from 'react';
 import useFetchGames from '../../../hooks/useFetchGames';
+import IGame from '../../../interfaces/IGame';
+import Card from '../../card';
+import './Games.scss';
 
 const Games = () => {
   const { isLoading, apiData: games } = useFetchGames();
+  console.log(games);
 
-  console.log('me renderizo');
   return (
-    <div>
-      {isLoading && <p>Cargando</p>}
+    <div className="cards-container">
+      {isLoading && <p>Loading</p>}
       {!isLoading && (
-        games.map((game) => game.name)
+        games.map((game: IGame) => <Card key={game.id} game={game} />)
       )}
     </div>
   );
