@@ -28,7 +28,6 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
-
       </div>
 
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -38,7 +37,7 @@ const Navbar = () => {
             <i className="bi bi-x-lg" />
           </button>
           {SideBarOptions.map((item) => (
-            <li className="nav-text">
+            <li className="nav-text" key={item.id}>
               <Link to={item.path}>
                 <i className={item.icon} />
                 <span>{item.title}</span>

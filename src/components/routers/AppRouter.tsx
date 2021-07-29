@@ -10,20 +10,23 @@ import details from '../pages/details';
 import games from '../pages/games';
 import Home from '../pages/home';
 import Login from '../pages/login';
+import './AppRouter.scss';
 
 const AppRouter = () => (
   <Router>
     <>
       <Navbar />
-      <div>
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/games" component={games} />
-          <Route exact path="/games/:id" component={details} />
-          <Route exact path="/" component={Home} />
+      <div className="container">
+        <div>
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/games" component={games} />
+            <Route exact path="/games/:id" component={details} />
+            <Route exact path="/" component={Home} />
 
-          <Redirect to="/" />
-        </Switch>
+            <Redirect to="/" />
+          </Switch>
+        </div>
       </div>
     </>
   </Router>

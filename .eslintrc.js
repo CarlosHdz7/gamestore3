@@ -22,6 +22,7 @@ module.exports = {
   rules: {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
+    'no-console': 'warn',
     'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'import/extensions': [
       'error', 'ignorePackages', { ts: 'never', tsx: 'never' },
