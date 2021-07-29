@@ -8,12 +8,18 @@ const Games = () => {
   const { isLoading, apiData: games } = useFetchGames();
 
   return (
-    <div className="cards-container">
-      {isLoading && <p>Loading</p>}
-      {!isLoading && (
-        games.map((game: IGame) => <Card key={game.id} game={game} />)
-      )}
-    </div>
+    <>
+      <h1 className="title">
+        <i className="bi bi-joystick" />
+        <span>List of games</span>
+      </h1>
+      <div className="cards-container">
+        {isLoading && <p>Loading</p>}
+        {!isLoading && (
+          games.map((game: IGame) => <Card key={game.id} game={game} />)
+        )}
+      </div>
+    </>
   );
 };
 

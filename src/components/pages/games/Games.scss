@@ -1,3 +1,5 @@
+@import '../../../styles/settings.scss';
+
 .cards-container {
   display: grid;
   grid-gap: 20px;
@@ -5,4 +7,12 @@
   justify-items: center;
   margin-top: 20px;
   padding-bottom: 10px;
+}
+
+.title{
+  color: $white-color;
+
+  span{
+    margin-left: 10px;
+  }
 }
