@@ -21,7 +21,7 @@
 
 .card-img {
   @include  w-h-100;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .card-info {
