@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
@@ -37,7 +38,7 @@ const Navbar = () => {
             <i className="bi bi-x-lg" />
           </button>
           {SideBarOptions.map((item) => (
-            <li className="nav-text" key={item.id}>
+            <li className="nav-text" key={item.id} onClick={showSideBar}>
               <Link to={item.path}>
                 <i className={item.icon} />
                 <span>{item.title}</span>
