@@ -1,0 +1,79 @@
+@import '../../../styles/Settings.scss';
+@import '../../../styles/Common.scss';
+
+.login-page{
+  background-color: $dark-purple-color2;
+  width: 100%;
+  height: 100vh;
+}
+
+.login-container{
+  padding-top:50px;
+  width: 900px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  grid-template-rows: auto;
+  grid-gap:10px;
+}
+
+.login-container__welcome{
+  @include center-all;
+  color:$white-color;
+  padding: 30px;
+  font-size: 30px;
+}
+
+.login-container__form{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: $primary-color;
+  color:$white-color;
+  border-radius: 10px;
+}
+
+.form__title{
+  color:$white-color;
+  font-size: 25px;
+  margin-bottom: 0px;
+}
+
+.form__input{
+  padding: 10px;
+  border: none;
+  background-color: $purple-color2;
+  color: $white-color;
+  font-weight: map-get($font-weights, bold);
+}
+
+.form__button{
+  margin-top: 15px;
+  color:$purple-color;
+  padding: 10px;
+  background-color: $secondary-color;
+  font-weight: map-get($font-weights, bold);
+  cursor: pointer;
+  border:none;
+  font-size: 16px;
+}
+
+.form__button:hover{
+  background-color: $dark-orange-color;
+}
+
+.error-message{
+  padding: 5px;
+  color: $white-color;
+  background-color: $red-color;
+  text-align: center;
+}
+
+@media (max-width: $tablet) {
+  .login-container{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}
