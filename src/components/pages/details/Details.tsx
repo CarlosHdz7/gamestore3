@@ -1,15 +1,22 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import useFetchGame from '../../../hooks/useFetchGame';
 import Breadcrumb from '../../breadcrumb';
+import Loader from '../../loader';
 import './Details.scss';
 
 const Details = () => {
   const { id } = useParams<any>(); // game id
   const { isLoading, apiData: game, serverError }:
   { isLoading: boolean, apiData : any, serverError: any} = useFetchGame(id);
+
+  if (serverError) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <div className="details-page-container">
+      {isLoading && <Loader />}
       { (!isLoading && !serverError) ? (
         <>
           <Breadcrumb game={game.name} />
