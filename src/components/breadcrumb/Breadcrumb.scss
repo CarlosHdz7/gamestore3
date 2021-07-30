@@ -1,0 +1,35 @@
+@import '../../styles/Settings.scss';
+@import '../../styles/Common.scss';
+ 
+.breadcrumb {
+  padding: 10px 0px;
+  list-style: none;
+  background-color: $primary-color;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.breadcrumb-nav {
+  display: inline;
+  font-size: 18px;
+  color: $muted-color;
+  font-weight: map-get($font-weights, bold);
+  font-size: 14px;
+}
+
+.breadcrumb-nav+.breadcrumb-nav:before {
+  padding: 8px;
+  color:  $muted-color;
+  content: "/\00a0";
+}
+
+.breadcrumb-link {
+  text-decoration: none;
+  color: $muted-color;
+  font-weight: map-get($font-weights, bold);
+}
+
+.breadcrumb-link:hover {
+  color: $white-color;
+  text-decoration: underline;
+} 

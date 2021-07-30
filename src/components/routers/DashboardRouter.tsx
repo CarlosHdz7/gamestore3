@@ -7,6 +7,7 @@ import {
 import Navbar from '../navbar';
 import details from '../pages/details';
 import games from '../pages/games';
+import Home from '../pages/home';
 import './AppRouter.scss';
 
 const DashboardRouter = () => (
@@ -14,10 +15,11 @@ const DashboardRouter = () => (
     <Navbar />
     <div className="container">
       <Switch>
+        <Route exact path="/" component={Home} />
         <Route exact path="/games" component={games} />
         <Route exact path="/games/:id" component={details} />
 
-        <Redirect to="/games" />
+        <Redirect to="/" />
       </Switch>
     </div>
   </>
