@@ -36,30 +36,6 @@ class Helpers {
     };
     return game;
   }
-
-  // static async getCommentsByGame(id) {
-  //   const url = `/games/${id}/comments?_limit=200&_sort=id&_order=asc`;
-  //   const data = await singleton.getData(url, 'A error has ocurred while loading comments.');
-  //   return _.orderBy(data, ['id'], ['desc']);
-  // }
-
-  // static async postComment(id, data, headers) {
-  //   const url = `/games/${id}/comment`;
-  //   const response = await singleton.postData(url, data, headers);
-  //   return response;
-  // }
-
-  // static async postLogin(credentials) {
-  //   const url = '/auth/local';
-  //   const dataUser = await singleton.postData(url, credentials);
-  //   const user = {
-  //     id: dataUser.user.id,
-  //     jwt: dataUser.jwt,
-  //     username: dataUser.user.username,
-  //     email: dataUser.user.email,
-  //   };
-  //   return user;
-  // }
 }
 
 export default Helpers;
