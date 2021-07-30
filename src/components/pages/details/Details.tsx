@@ -45,12 +45,12 @@ const Details = () => {
                 $
                 {game.price}
               </p>
-              {/* <p className="info-container__text">
+              <p className="info-container__text">
                 <span className="bold">Publishers: </span>
-                {game.publishers?.map(({ id: idPublisher, name }) => (
-                  <span key={idPublisher}>{name}</span>
+                {game.publishers?.map((publisher: {id: number; name: string}) => (
+                  <span key={publisher.id}>{publisher.name}</span>
                 ))}
-              </p> */}
+              </p>
               <button type="button" className="info-container__button">
                 Buy now
               </button>
