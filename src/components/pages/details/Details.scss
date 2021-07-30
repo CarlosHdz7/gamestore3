@@ -1,0 +1,122 @@
+@import '../../../styles/Settings.scss';
+@import '../../../styles/Common.scss';
+
+.details-page-container{
+  margin-top: 10px ;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button-container__button {
+  background-color: $dark-purple-color;
+  color: $white-color;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.button-container__icon {
+  margin-right: 4px;
+}
+
+.details-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 4fr 8fr;
+  grid-template-rows: auto;
+  height: auto;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.info-container {
+  background-color: $dark-purple-color;
+  padding: 20px;
+  box-shadow: $shadow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-container__text {
+  color: $white-color;
+  margin: 10px 5px;
+}
+
+.info-container__text--name {
+  font-size: 30px;
+  font-weight: map-get($font-weights, bold);
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.info-container__button{
+  background-color: $secondary-color;
+  border: none;
+  padding: 10px;
+  width: 100px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+.comments-container{
+  margin-top: 20px;
+}
+
+.comments-container__title {
+  color: $white-color;
+  font-weight: map-get($font-weights, bold);
+}
+
+.comments-container__textarea {
+  background-color: $primary-color;
+  border: 2px solid $purple-color;
+  box-sizing: border-box;
+  color: $white-color;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.comments-container-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment-button {
+  background-color: $dark-purple-color;
+  border: none;
+  color: $white-color;
+  cursor: pointer;
+  padding: 10px;
+  box-shadow: $shadow;
+}
+
+.container-img-cover{
+  width: 100%;
+  box-shadow: $shadow;
+}
+
+.login-message{
+  padding: 5px;
+  background-color: $dark-orange-color;
+  font-weight: map-get($font-weights, bold);
+  text-align: center;
+}
+
+.container-img-cover__img{
+  @include  w-h-100;
+}
+
+@media (max-width: $tablet) {
+  .card-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .details-container {
+    grid-template-columns: 1fr;
+  }
+}

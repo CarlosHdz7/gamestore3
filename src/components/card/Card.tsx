@@ -1,14 +1,10 @@
 import React from 'react';
 import './Card.scss';
+import { Link } from 'react-router-dom';
 import IGame from '../../interfaces/IGame';
 
 const Card = ({ game }: {game: IGame}) => (
-  <a
-    href="/"
-    role="button"
-    tabIndex={0}
-    className="card"
-  >
+  <Link to={`/games/${game.id}`} className="card">
     <div className="card-img-container">
       <img
         className="card-img"
@@ -31,7 +27,7 @@ const Card = ({ game }: {game: IGame}) => (
         Buy now
       </button>
     </div>
-  </a>
+  </Link>
 );
 
 export default Card;

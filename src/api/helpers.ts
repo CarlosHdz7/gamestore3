@@ -20,22 +20,22 @@ class Helpers {
     return games;
   }
 
-  // static async getGameById(id) {
-  //   const url = `/games/${id}`;
-  //   const data = await singleton.getData(url,
-  // 'A error has ocurred while loading video game information.');
-  //   const game = {
-  //     id: data.id,
-  //     name: data.name,
-  //     genre: data.genre?.name,
-  //     releaseYear: data.release_year,
-  //     price: data.price,
-  //     urlImage: data.cover_art?.url,
-  //     comments: data.comments,
-  //     publishers: data.publishers,
-  //   };
-  //   return game;
-  // }
+  static async getGameById(id: number) {
+    const url = `/games/${id}`;
+    const data = await singleton.getData(url,
+      'A error has ocurred while loading video game information.');
+    const game = {
+      id: data.id,
+      name: data.name,
+      genre: data.genre?.name,
+      releaseYear: data.release_year,
+      price: data.price,
+      urlImage: data.cover_art?.url,
+      comments: data.comments,
+      publishers: data.publishers,
+    };
+    return game;
+  }
 
   // static async getCommentsByGame(id) {
   //   const url = `/games/${id}/comments?_limit=200&_sort=id&_order=asc`;
