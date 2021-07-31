@@ -1,13 +1,16 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import useFetchComments from '../../../hooks/useFetchComments';
 import useFetchGameById from '../../../hooks/useFetchGame';
 import Breadcrumb from '../../breadcrumb';
+import Comments from '../../comments';
 import Loader from '../../loader';
 import './Details.scss';
 
 const Details = () => {
-  const { id } = useParams<any>(); // game id
+  const { id }: { id: string } = useParams(); // game id
   const { isLoading, game } = useFetchGameById(id);
+  const { isLoading: isLoadingComments, comments, error } = useFetchComments(id);
 
   return (
     <div className="details-page-container">
@@ -55,6 +58,18 @@ const Details = () => {
           </>
         )
       }
+
+      <div className="comments-container">
+        <p className="comments-container__title">Comments:</p>
+
+        {isLoadingComments && <Loader />}
+
+        { (comments) ? (
+          <Comments comments={comments} />
+        ) : (
+          <p>{error}</p>
+        )}
+      </div>
     </div>
   );
 };

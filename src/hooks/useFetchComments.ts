@@ -1,26 +1,25 @@
 import { useEffect, useReducer, Reducer } from 'react';
 import { Actions, StateFetch, fetchActions } from '../reducers/fetchReducer/actions';
 import fetchReducer from '../reducers/fetchReducer';
-import { getGameById } from '../api/getGameById';// import IGame from '../interfaces/IGame';
-import IGame from '../interfaces/IGame';
+import { getComments } from '../api/getComments';// import IGame from '../interfaces/IGame';
 
-const initialState: StateFetch<IGame> = {
+const initialState: StateFetch<any> = {
   isLoading: false,
   error: '',
   data: null,
 };
 
-const useFetchGame = (id: string) => {
+const useFetchComments = (id: string) => {
   const [state, dispatch] = useReducer<
-    Reducer<StateFetch<IGame>, fetchActions<IGame>>
+    Reducer<StateFetch<any>, fetchActions<any>>
   >(fetchReducer, initialState);
-  const { data: game, isLoading, error } = state;
+  const { data: comments, isLoading, error } = state;
 
   useEffect(() => {
     dispatch({ type: Actions.SET_LOADING });
-    getGameById(id)
-      .then((gameData) => {
-        dispatch({ type: Actions.SET_SUCCESS, payload: { data: gameData } });
+    getComments(id)
+      .then((commentsData) => {
+        dispatch({ type: Actions.SET_SUCCESS, payload: { data: commentsData } });
       })
       .catch(() => {
         dispatch({
@@ -30,7 +29,7 @@ const useFetchGame = (id: string) => {
       });
   }, [id]);
 
-  return { game, isLoading, error };
+  return { comments, isLoading, error };
 };
 
-export default useFetchGame;
+export default useFetchComments;

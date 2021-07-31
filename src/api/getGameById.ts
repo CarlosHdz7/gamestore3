@@ -5,7 +5,7 @@
 import IGame from '../interfaces/IGame';
 import { get } from './fetchInfo';
 
-export const getGameById = async (id: number) => {
+export const getGameById = async (id: string) => {
   const game = await get<IGame>(
     `https://trainee-gamerbox.herokuapp.com/games/${id}`,
   );
