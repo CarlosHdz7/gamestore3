@@ -1,4 +1,6 @@
-import { useEffect, useReducer, Reducer } from 'react';
+import {
+  useEffect, useReducer, Reducer, useRef,
+} from 'react';
 import { Actions, StateFetch, fetchActions } from '../reducers/fetchReducer/actions';
 import fetchReducer from '../reducers/fetchReducer';
 import { getGameById } from '../api/getGameById';// import IGame from '../interfaces/IGame';
@@ -15,12 +17,16 @@ const useFetchGame = (id: string) => {
     Reducer<StateFetch<IGame>, fetchActions<IGame>>
   >(fetchReducer, initialState);
   const { data: game, isLoading, error } = state;
+  const isMounted = useRef<boolean>(true);
 
   useEffect(() => {
+    isMounted.current = true;
     dispatch({ type: Actions.SET_LOADING });
     getGameById(id)
       .then((gameData) => {
-        dispatch({ type: Actions.SET_SUCCESS, payload: { data: gameData } });
+        if (isMounted.current) {
+          dispatch({ type: Actions.SET_SUCCESS, payload: { data: gameData } });
+        }
       })
       .catch(() => {
         dispatch({
@@ -28,6 +34,9 @@ const useFetchGame = (id: string) => {
           payload: { error: 'There was an error while loading the pokemon' },
         });
       });
+    return () => {
+      isMounted.current = false;
+    };
   }, [id]);
 
   return { game, isLoading, error };

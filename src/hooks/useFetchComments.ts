@@ -1,4 +1,6 @@
-import { useEffect, useReducer, Reducer } from 'react';
+import {
+  useEffect, useReducer, Reducer, useRef,
+} from 'react';
 import { Actions, StateFetch, fetchActions } from '../reducers/fetchReducer/actions';
 import fetchReducer from '../reducers/fetchReducer';
 import { getComments } from '../api/getComments';// import IGame from '../interfaces/IGame';
@@ -14,12 +16,16 @@ const useFetchComments = (id: string) => {
     Reducer<StateFetch<any>, fetchActions<any>>
   >(fetchReducer, initialState);
   const { data: comments, isLoading, error } = state;
+  const isMounted = useRef<boolean>(true);
 
   useEffect(() => {
+    isMounted.current = true;
     dispatch({ type: Actions.SET_LOADING });
     getComments(id)
       .then((commentsData) => {
-        dispatch({ type: Actions.SET_SUCCESS, payload: { data: commentsData } });
+        if (isMounted.current) {
+          dispatch({ type: Actions.SET_SUCCESS, payload: { data: commentsData } });
+        }
       })
       .catch(() => {
         dispatch({
