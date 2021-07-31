@@ -1,5 +1,4 @@
 import { useEffect, Reducer, useReducer } from 'react';
-// import IGame from '../interfaces/IGame';
 import { Actions, StateFetch, fetchActions } from '../reducers/fetchReducer/actions';
 import fetchReducer from '../reducers/fetchReducer';
 import { getGames } from '../api/getGames';
