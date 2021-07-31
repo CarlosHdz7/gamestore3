@@ -1,12 +1,12 @@
 import React from 'react';
 import useFetchGames from '../../../hooks/useFetchGames';
-import IGame from '../../../interfaces/IGame';
+// import IGame from '../../../interfaces/IGame';
 import Card from '../../card';
 import Loader from '../../loader';
 import './Games.scss';
 
 const Games = () => {
-  const { isLoading, apiData: games } = useFetchGames();
+  const { isLoading, games } = useFetchGames();
 
   return (
     <>
@@ -16,9 +16,14 @@ const Games = () => {
       </h1>
       {isLoading && <Loader />}
       <div className="cards-container">
-        {!isLoading && (
-          games.map((game: IGame) => <Card key={game.id} game={game} />)
-        )}
+        {/* {!isLoading && (
+          games.map((game: any) => <Card key={game.id} game={game} />)
+        )} */}
+        {
+          games && (
+            games.map((game: any) => <Card key={game.id} game={game} />)
+          )
+        }
       </div>
     </>
   );

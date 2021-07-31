@@ -1,33 +1,36 @@
-import { useState, useEffect, useRef } from 'react';
-import IGame from '../interfaces/IGame';
-import Helpers from '../api/helpers';
+import { useEffect, Reducer, useReducer } from 'react';
+// import IGame from '../interfaces/IGame';
+import { Actions, StateFetch, fetchActions } from '../reducers/fetchReducer/actions';
+import fetchReducer from '../reducers/fetchReducer';
+import { getGames } from '../api/getGames';
+
+const initialState: StateFetch<any> = {
+  isLoading: false,
+  error: '',
+  data: null,
+};
 
 const useFetchGames = () => {
-  const isMounted = useRef(true);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [apiData, setApiData] = useState<IGame[]>([]);
-  const [serverError, setServerError] = useState<boolean | null | string>(null);
+  const [state, dispatch] = useReducer<
+    Reducer<StateFetch<any>, fetchActions<any>>
+  >(fetchReducer, initialState);
+  const { data: games, isLoading, error } = state;
 
   useEffect(() => {
-    isMounted.current = true;
-
-    Helpers.getGames()
-      .then((games: IGame[]) => {
-        if (isMounted.current) {
-          setApiData(games);
-          setIsLoading(false);
-        }
-      }).catch((error) => {
-        setServerError(error.message);
-        setIsLoading(false);
+    dispatch({ type: Actions.SET_LOADING });
+    getGames()
+      .then((gamesData) => {
+        dispatch({ type: Actions.SET_SUCCESS, payload: { data: gamesData } });
+      })
+      .catch(() => {
+        dispatch({
+          type: Actions.SET_ERROR,
+          payload: { error: 'There was an error while loading the pokemon' },
+        });
       });
-
-    return () => {
-      isMounted.current = false;
-    };
   }, []);
 
-  return { isLoading, apiData, serverError };
+  return { games, isLoading, error };
 };
 
 export default useFetchGames;

@@ -21,4 +21,4 @@ async function post<T, U>(
   return http<U>(path, init);
 }
 
-export default { get, post };
+export { get, post };
