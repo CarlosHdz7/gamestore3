@@ -2,8 +2,9 @@ import { useEffect, Reducer, useReducer } from 'react';
 import { Actions, StateFetch, fetchActions } from '../reducers/fetchReducer/actions';
 import fetchReducer from '../reducers/fetchReducer';
 import { getGames } from '../api/getGames';
+import IGame from '../interfaces/IGame';
 
-const initialState: StateFetch<any> = {
+const initialState: StateFetch<Array<IGame>> = {
   isLoading: false,
   error: '',
   data: null,
@@ -11,7 +12,7 @@ const initialState: StateFetch<any> = {
 
 const useFetchGames = () => {
   const [state, dispatch] = useReducer<
-    Reducer<StateFetch<any>, fetchActions<any>>
+    Reducer<StateFetch<Array<IGame>>, fetchActions<Array<IGame>>>
   >(fetchReducer, initialState);
   const { data: games, isLoading, error } = state;
 
