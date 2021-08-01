@@ -12,7 +12,7 @@ const initialState: StateFetch<Array<IGame>> = {
   data: null,
 };
 
-const useFetchGames = () => {
+const useFetchGames = (name: string) => {
   const [state, dispatch] = useReducer<
     Reducer<StateFetch<Array<IGame>>, fetchActions<Array<IGame>>>
   >(fetchReducer, initialState);
@@ -22,7 +22,7 @@ const useFetchGames = () => {
   useEffect(() => {
     isMounted.current = true;
     dispatch({ type: Actions.SET_LOADING });
-    getGames()
+    getGames(name)
       .then((gamesData) => {
         if (isMounted.current) {
           dispatch({ type: Actions.SET_SUCCESS, payload: { data: gamesData } });
@@ -38,7 +38,7 @@ const useFetchGames = () => {
     return () => {
       isMounted.current = false;
     };
-  }, []);
+  }, [name]);
 
   return { games, isLoading, error };
 };

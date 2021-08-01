@@ -16,3 +16,17 @@
     margin-left: 10px;
   }
 }
+
+.input-search-container{
+  width: 100%;
+}
+
+.input-search{
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid $dark-purple-color2;
+  background-color: $primary-color;
+  color: $white-color;
+  border-radius: 10px;
+}

@@ -1,6 +1,10 @@
 @import '~bootstrap-icons/font/bootstrap-icons';
 @import './settings.scss';
 
+*{
+  // border: 1px solid red
+}
+
 body{
   background-color: $primary-color;
 }

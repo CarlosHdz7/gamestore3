@@ -1,27 +1,42 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import _ from 'lodash';
 import useFetchGames from '../../../hooks/useFetchGames';
-// import IGame from '../../../interfaces/IGame';
+import IGame from '../../../interfaces/IGame';
 import Card from '../../card';
 import Loader from '../../loader';
 import './Games.scss';
 
-const Games = () => {
-  const { isLoading, games } = useFetchGames();
+const Games = ({ location, history }: {location: any, history: any}) => {
+  const params = new URLSearchParams(location.search);
+  const q = params.get('q') || '';
+  const { isLoading, games } = useFetchGames(q);
+  const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+  const handleSearch = _.debounce(() => {
+    const query = (inputRef.current.value) ? `?q=${inputRef.current.value}` : '?';
+    history.push(query);
+  }, 1000);
 
   return (
     <>
       <h1 className="title">
         <i className="bi bi-joystick" />
         <span>List of games</span>
+        <div className="input-search-container">
+          <input
+            className="input-search"
+            type="text"
+            placeholder="Search"
+            ref={inputRef}
+            onChange={handleSearch}
+          />
+        </div>
       </h1>
       {isLoading && <Loader />}
       <div className="cards-container">
-        {/* {!isLoading && (
-          games.map((game: any) => <Card key={game.id} game={game} />)
-        )} */}
         {
           games && (
-            games.map((game: any) => <Card key={game.id} game={game} />)
+            games.map((game: IGame) => <Card key={game.id} game={game} />)
           )
         }
       </div>
