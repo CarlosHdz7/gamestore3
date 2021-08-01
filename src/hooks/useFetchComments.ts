@@ -18,7 +18,7 @@ const useFetchComments = (id: string) => {
   const { data: comments, isLoading, error } = state;
   const isMounted = useRef<boolean>(true);
 
-  useEffect(() => {
+  const getCommentsRefresh = () => {
     isMounted.current = true;
     dispatch({ type: Actions.SET_LOADING });
     getComments(id)
@@ -33,9 +33,18 @@ const useFetchComments = (id: string) => {
           payload: { error: 'There was an error while loading the pokemon' },
         });
       });
+  };
+
+  useEffect(() => {
+    getCommentsRefresh();
+    return () => {
+      isMounted.current = false;
+    };
   }, [id]);
 
-  return { comments, isLoading, error };
+  return {
+    comments, isLoading, error, getCommentsRefresh,
+  };
 };
 
 export default useFetchComments;

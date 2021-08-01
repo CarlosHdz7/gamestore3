@@ -55,6 +55,19 @@ const Details = () => {
                 </button>
               </div>
             </div>
+
+            <p className="comments-container__title">Write a comment:</p>
+            <textarea
+              className="comments-container__textarea"
+            />
+            <div className="comments-container-button">
+              <button
+                type="button"
+                className="comment-button"
+              >
+                Comment
+              </button>
+            </div>
           </>
         )
       }

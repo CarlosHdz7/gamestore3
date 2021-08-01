@@ -1,7 +1,8 @@
 import React from 'react';
+import { IComment } from '../../interfaces/IComment';
 import './Comments.scss';
 
-const Comments = ({ comments }: {comments: any}) => {
+const Comments = ({ comments }: {comments: Array<IComment>}) => {
   if (comments.length) {
     return (
       <>
