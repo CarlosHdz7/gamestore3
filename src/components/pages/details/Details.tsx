@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import { postComment } from '../../../api/postComment';
 import useAuth from '../../../hooks/useAuth';
 import useFetchComments from '../../../hooks/useFetchComments';
 import useFetchGameById from '../../../hooks/useFetchGame';
@@ -10,10 +11,36 @@ import './Details.scss';
 
 const Details = () => {
   const { id }: { id: string } = useParams(); // game id
+  const [inputComment, setInputComment] = useState('');
   const { isLoading, game } = useFetchGameById(id);
-  const { isLoading: isLoadingComments, comments, error } = useFetchComments(id);
+  const {
+    isLoading: isLoadingComments, comments, error, getCommentsRefresh,
+  } = useFetchComments(id);
   const { getUser } = useAuth();
   const storedValue = getUser();
+
+  const handleInputChange = useCallback((e) => {
+    setInputComment(e.target.value);
+  }, [id]);
+
+  const handlePostComment = async () => {
+    if (!inputComment || inputComment.length > 100) return;
+    const comment = {
+      body: inputComment,
+    };
+
+    const headers = {
+      Authorization: `Bearer ${storedValue.jwt}`,
+    };
+
+    try {
+      await postComment(id, comment, headers);
+      setInputComment('');
+      getCommentsRefresh();
+    } catch (errorMessage) {
+      console.log(errorMessage);
+    }
+  };
 
   return (
     <div className="details-page-container">
@@ -65,11 +92,14 @@ const Details = () => {
                   <p className="comments-container__title">Write a comment:</p>
                   <textarea
                     className="comments-container__textarea"
+                    onChange={handleInputChange}
+                    value={inputComment}
                   />
                   <div className="comments-container-button">
                     <button
                       type="button"
                       className="comment-button"
+                      onClick={handlePostComment}
                     >
                       Comment
                     </button>
