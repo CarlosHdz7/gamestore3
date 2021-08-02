@@ -43,7 +43,7 @@ const Navbar = () => {
             }
             {
               storedValue && (
-                <button type="button" className="navbar-container-item" onClick={logoutUser}>
+                <button type="button" className="navbar-container-item--button" onClick={logoutUser}>
                   Logout
                 </button>
               )

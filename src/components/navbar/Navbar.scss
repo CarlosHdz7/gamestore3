@@ -39,6 +39,13 @@
   padding: 5px;
 }
 
+.navbar-container-item--button{
+  @extend .navbar-container-item;
+  background-color: $dark-purple-color2;
+  border: none;
+  font-size: 1rem;
+}
+
 
 
 
