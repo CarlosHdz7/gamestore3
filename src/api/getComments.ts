@@ -5,7 +5,7 @@ import _ from 'lodash';
 // import IGame from '../interfaces/IGame';
 import { get } from './fetchInfo';
 
-export const getComments = async (id: string) => {
+export const getComments = async (id: number) => {
   const comments = await get<any>(
     `${process.env.REACT_APP_API_URL}/games/${id}/comments?_limit=200`,
   );

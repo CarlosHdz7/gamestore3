@@ -11,7 +11,7 @@ const initialState: StateFetch<any> = {
   data: null,
 };
 
-const useFetchComments = (id: string) => {
+const useFetchComments = (id: number) => {
   const [state, dispatch] = useReducer<
     Reducer<StateFetch<any>, fetchActions<any>>
   >(fetchReducer, initialState);

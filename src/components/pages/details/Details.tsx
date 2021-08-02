@@ -15,7 +15,7 @@ const Details = () => {
   const { isLoading, game } = useFetchGameById(id);
   const {
     isLoading: isLoadingComments, comments, error, getCommentsRefresh,
-  } = useFetchComments(id);
+  } = useFetchComments(parseInt(id, 10));
   const { getUser } = useAuth();
   const storedValue = getUser();
 
