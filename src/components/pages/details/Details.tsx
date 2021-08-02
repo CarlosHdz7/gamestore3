@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import useFetchComments from '../../../hooks/useFetchComments';
 import useFetchGameById from '../../../hooks/useFetchGame';
 import Breadcrumb from '../../breadcrumb';
@@ -11,6 +12,8 @@ const Details = () => {
   const { id }: { id: string } = useParams(); // game id
   const { isLoading, game } = useFetchGameById(id);
   const { isLoading: isLoadingComments, comments, error } = useFetchComments(id);
+  const { getUser } = useAuth();
+  const storedValue = getUser();
 
   return (
     <div className="details-page-container">
@@ -56,18 +59,24 @@ const Details = () => {
               </div>
             </div>
 
-            <p className="comments-container__title">Write a comment:</p>
-            <textarea
-              className="comments-container__textarea"
-            />
-            <div className="comments-container-button">
-              <button
-                type="button"
-                className="comment-button"
-              >
-                Comment
-              </button>
-            </div>
+            {
+              storedValue && (
+                <>
+                  <p className="comments-container__title">Write a comment:</p>
+                  <textarea
+                    className="comments-container__textarea"
+                  />
+                  <div className="comments-container-button">
+                    <button
+                      type="button"
+                      className="comment-button"
+                    >
+                      Comment
+                    </button>
+                  </div>
+                </>
+              )
+            }
           </>
         )
       }

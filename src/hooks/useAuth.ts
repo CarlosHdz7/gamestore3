@@ -4,19 +4,20 @@ import useLocalStorage from './useLocalStorage';
 import { postLogin } from '../api/postLogin';
 
 const useAuth = () => {
-  // const [storedValue, setValue, deleteValue] = useLocalStorage('user');
-  const [storedValue, setValue] = useLocalStorage('user');
+  const { getValue, setValue, deleteValue } = useLocalStorage(false);
+
+  const getUser = () => getValue('user');
 
   const login = async (credentials: any) => {
     const user = await postLogin(credentials);
-    setValue(user);
+    setValue('user', user);
   };
 
-  // const logout = () => {
+  const logout = async (key: string) => {
+    deleteValue(key);
+  };
 
-  // };
-
-  return { storedValue, login };
+  return { getUser, login, logout };
 };
 
 export default useAuth;

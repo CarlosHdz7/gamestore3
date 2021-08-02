@@ -2,13 +2,23 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import SideBarOptions from './SidebarOptions';
 import './Navbar.scss';
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
   const [sidebar, setSideBar] = useState<boolean>(false);
+  const history = useHistory();
+
+  const { getUser, logout } = useAuth();
+  const storedValue = getUser();
+
   const showSideBar = () => setSideBar(!sidebar);
+  const logoutUser = () => {
+    logout('user');
+    history.push('/login');
+  };
 
   return (
     <>
@@ -24,9 +34,20 @@ const Navbar = () => {
             <Link className="navbar-container-item" to="/games">
               Games
             </Link>
-            <Link className="navbar-container-item" to="/login">
-              Login
-            </Link>
+            {
+              !storedValue && (
+                <Link className="navbar-container-item" to="/login">
+                  Login
+                </Link>
+              )
+            }
+            {
+              storedValue && (
+                <button type="button" className="navbar-container-item" onClick={logoutUser}>
+                  Logout
+                </button>
+              )
+            }
           </div>
         </div>
       </div>
