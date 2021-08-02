@@ -7,12 +7,13 @@ import {
 import Login from '../pages/login';
 import './AppRouter.scss';
 import DashboardRouter from './DashboardRouter';
+import { routesPath } from './routes';
 
 const AppRouter = () => (
   <Router>
     <Switch>
-      <Route exact path="/login" component={Login} />
-      <Route path="/" component={DashboardRouter} />
+      <Route exact path={routesPath.LOGIN} component={Login} />
+      <Route path={routesPath.HOME} component={DashboardRouter} />
     </Switch>
   </Router>
 );

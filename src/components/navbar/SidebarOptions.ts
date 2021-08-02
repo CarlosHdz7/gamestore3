@@ -1,20 +1,22 @@
+import { routesPath } from '../routers/routes';
+
 const SideBarOptions = [
   {
     id: 1,
     title: 'Home',
-    path: '/',
+    path: routesPath.HOME,
     icon: 'bi bi-house-fill',
   },
   {
     id: 2,
     title: 'Games',
-    path: '/games',
+    path: routesPath.GAMES,
     icon: 'bi bi-person-fill',
   },
   {
     id: 3,
     title: 'Login',
-    path: '/login',
+    path: routesPath.LOGIN,
     icon: 'bi bi-joystick',
   },
 ];
