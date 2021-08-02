@@ -1,11 +1,12 @@
 import React, { useRef } from 'react';
 import './Login.scss';
-import { postLogin } from '../../../api/postLogin';
+import useAuth from '../../../hooks/useAuth';
 
 const Login = ({ history }: { history: any}) => {
   const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
+  const { login } = useAuth();
 
-  const handleLoginClick = (e: any) => {
+  const handleLoginClick = async (e: any) => {
     e.preventDefault();
     const { username, password } = formRef.current;
 
@@ -14,10 +15,12 @@ const Login = ({ history }: { history: any}) => {
       password: password.value,
     };
 
-    postLogin(credentials).then((user) => {
-      history.replace('/');
-      console.log(user);
-    });
+    try {
+      await login(credentials);
+      history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
