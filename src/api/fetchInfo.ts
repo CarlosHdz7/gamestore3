@@ -1,4 +1,18 @@
 /* eslint-disable no-undef */
+async function getConfig(headers = {}) {
+  return {
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+      ...headers,
+    },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+  };
+}
+
 async function http<T>(path: string, config: RequestInit): Promise<T> {
   const request = new Request(path, config);
   const response = await fetch(request);
@@ -22,4 +36,4 @@ async function post<T, U>(
   return http<U>(path, init);
 }
 
-export { get, post };
+export { get, post, getConfig };
