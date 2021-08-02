@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import './Login.scss';
 import useAuth from '../../../hooks/useAuth';
+import { ICredentials } from '../../../interfaces/ICredentials';
 
 const Login = ({ history }: { history: any}) => {
   const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
@@ -10,7 +11,7 @@ const Login = ({ history }: { history: any}) => {
     e.preventDefault();
     const { username, password } = formRef.current;
 
-    const credentials = {
+    const credentials: ICredentials = {
       identifier: username.value,
       password: password.value,
     };

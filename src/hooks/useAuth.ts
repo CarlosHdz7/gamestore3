@@ -2,13 +2,14 @@
 import useLocalStorage from './useLocalStorage';
 
 import { postLogin } from '../api/postLogin';
+import { ICredentials } from '../interfaces/ICredentials';
 
 const useAuth = () => {
   const { getValue, setValue, deleteValue } = useLocalStorage(false);
 
   const getUser = () => getValue('user');
 
-  const login = async (credentials: any) => {
+  const login = async (credentials: ICredentials) => {
     const user = await postLogin(credentials);
     setValue('user', user);
   };
