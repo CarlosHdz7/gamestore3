@@ -7,7 +7,7 @@ import { post } from './fetchInfo';
 
 export const postLogin = async (body : ICredentials, headers: any = {}) => {
   const user = await post<ICredentials, IUser>(
-    'https://trainee-gamerbox.herokuapp.com/auth/local',
+    `${process.env.REACT_APP_API_URL}/auth/local`,
     body,
     {
       mode: 'cors',

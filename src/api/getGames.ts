@@ -6,7 +6,7 @@ import { get } from './fetchInfo';
 
 export const getGames = async (name: string = '') => {
   const games = await get<Array<IGame>>(
-    `https://trainee-gamerbox.herokuapp.com/games?name_contains=${name}`,
+    `${process.env.REACT_APP_API_URL}/games?name_contains=${name}`,
   );
   return games;
 };

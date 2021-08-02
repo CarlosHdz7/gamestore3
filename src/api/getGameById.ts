@@ -7,7 +7,7 @@ import { get } from './fetchInfo';
 
 export const getGameById = async (id: string) => {
   const game = await get<IGame>(
-    `https://trainee-gamerbox.herokuapp.com/games/${id}`,
+    `${process.env.REACT_APP_API_URL}/games/${id}`,
   );
   return game;
 };
