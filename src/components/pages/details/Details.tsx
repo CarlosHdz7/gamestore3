@@ -53,7 +53,7 @@ const Details = () => {
               <div className="container-img-cover">
                 <img
                   className="container-img-cover__img"
-                  src={game.cover_art?.url ? game.cover_art?.url : '/images/not-found.png'}
+                  src={game.cover_art.url ? game.cover_art?.url : '/images/not-found.png'}
                   alt=""
                 />
               </div>
