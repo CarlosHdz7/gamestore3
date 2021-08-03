@@ -1,14 +1,16 @@
 import React from 'react';
 import {
   Switch,
-  Route,
+  // Route,
   Redirect,
 } from 'react-router-dom';
 import Navbar from '../navbar';
-import details from '../pages/details';
-import games from '../pages/games';
+import Details from '../pages/details';
+import Games from '../pages/games';
 import Home from '../pages/home';
 import './AppRouter.scss';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 import { routesPath } from './routes';
 
 const DashboardRouter = () => (
@@ -16,10 +18,9 @@ const DashboardRouter = () => (
     <Navbar />
     <div className="container">
       <Switch>
-        <Route exact path={routesPath.HOME} component={Home} />
-        <Route exact path={routesPath.GAMES} component={games} />
-        <Route exact path={routesPath.DETAILS} component={details} />
-
+        <PublicRoute restricted={false} component={Home} path={routesPath.HOME} exact />
+        <PublicRoute restricted={false} component={Games} path={routesPath.GAMES} exact />
+        <PrivateRoute component={Details} path={routesPath.DETAILS} exact />
         <Redirect to="/" />
       </Switch>
     </div>
