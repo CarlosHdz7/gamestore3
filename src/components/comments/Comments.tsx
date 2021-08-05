@@ -6,7 +6,7 @@ const Comments = ({ comments }: {comments: Array<IComment>}) => {
   if (comments.length) {
     return (
       <>
-        {comments.map((comment: any) => (
+        {comments.map((comment: IComment) => (
           <div className="comment" key={comment.id}>
             <p>
               <span className="comment__user">
