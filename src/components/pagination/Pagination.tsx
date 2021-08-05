@@ -11,7 +11,7 @@ const Pagination = ({
 }: any) => {
   const [clickedId, setClickedId] = useState(1);
 
-  const pageNumbers: any = [];
+  const pageNumbers: Array<number> = [];
 
   const calculateTotalPages = () => Math.ceil(totalPosts / gamesPerPage);
   const totalPages = useMemo(() => calculateTotalPages(), [totalPosts, gamesPerPage]);
@@ -22,13 +22,15 @@ const Pagination = ({
     }
   };
 
-  const handlePaginate = useCallback((e, number) => {
-    e.preventDefault();
-    setClickedId(number);
-    paginate(number);
-  }, [gamesPerPage]);
+  const handlePaginate = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, number: number) => {
+      e.preventDefault();
+      setClickedId(number);
+      paginate(number);
+    }, [gamesPerPage],
+  );
 
-  const handlePrev = (e: any) => {
+  const handlePrev = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     const prevPage = currentPage - 1;
     if (prevPage > 0) {
@@ -37,7 +39,7 @@ const Pagination = ({
     }
   };
 
-  const handleNext = (e: any) => {
+  const handleNext = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     const nextPage = currentPage + 1;
     if (nextPage <= pageNumbers.length) {
@@ -57,7 +59,7 @@ const Pagination = ({
           </a>
         </li>
 
-        {pageNumbers.map((number: any) => (
+        {pageNumbers.map((number: number) => (
           <li key={number} className="page-item">
             <a
               onClick={(e) => handlePaginate(e, number)}
