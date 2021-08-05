@@ -22,7 +22,7 @@ const Games = ({ location, history }: RouteComponentProps) => {
   const indexOfFirstGame = indexOfLastGame - gamesPerPage;
   const currentGames = games?.slice(indexOfFirstGame, indexOfLastGame);
 
-  const paginate = (pageNumber: any) => {
+  const paginate = (pageNumber: number) => {
     history.push(`?page=${pageNumber}`);
     setCurrentPage(pageNumber);
   };
