@@ -4,8 +4,9 @@ import {
 import { Actions, StateFetch, fetchActions } from '../reducers/fetchReducer/actions';
 import fetchReducer from '../reducers/fetchReducer';
 import { getComments } from '../api/getComments';// import IGame from '../interfaces/IGame';
+import { IComment } from '../interfaces/IComment';
 
-const initialState: StateFetch<any> = {
+const initialState: StateFetch<Array<IComment>> = {
   isLoading: false,
   error: '',
   data: null,
@@ -13,7 +14,7 @@ const initialState: StateFetch<any> = {
 
 const useFetchComments = (id: number) => {
   const [state, dispatch] = useReducer<
-    Reducer<StateFetch<any>, fetchActions<any>>
+    Reducer<StateFetch<Array<IComment>>, fetchActions<Array<IComment>>>
   >(fetchReducer, initialState);
   const { data: comments, isLoading, error } = state;
   const isMounted = useRef<boolean>(true);
