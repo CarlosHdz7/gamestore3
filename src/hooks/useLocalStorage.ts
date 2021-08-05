@@ -1,14 +1,14 @@
-const useLocalStorage = (initialValue: any = false) => {
-  const getValue = (key: any) => {
+const useLocalStorage = <T>(initialValue: T | boolean = false) => {
+  const getValue = (key: string) => {
     const item = window.localStorage.getItem(key);
     return item ? JSON.parse(item) : initialValue;
   };
 
-  const setValue = (key: string, value: any) => {
+  const setValue = <V>(key: string, value: V) => {
     window.localStorage.setItem(key, JSON.stringify(value));
   };
 
-  const deleteValue = (key: any) => {
+  const deleteValue = (key: string) => {
     window.localStorage.removeItem(key);
   };
 
