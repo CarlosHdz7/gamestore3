@@ -3,10 +3,13 @@
 
 // import { ICredentials } from '../interfaces/ICredentials';
 // import { IUser } from '../interfaces/IUser';
+import { IComment } from '../interfaces/IComment';
+import { TComment } from '../types/TComment';
+import { THeaders } from '../types/THeaders';
 import { post } from './fetchInfo';
 
-export const postComment = async (id: string, body : any, headers: any = {}) => {
-  const comment = await post<any, any>(
+export const postComment = async (id: string, body : TComment, headers: THeaders = {}) => {
+  const comment = await post<TComment, IComment>(
     `${process.env.REACT_APP_API_URL}/games/${id}/comment`,
     body,
     {
