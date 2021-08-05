@@ -23,6 +23,7 @@ const Games = ({ location, history }: RouteComponentProps) => {
   const currentGames = games?.slice(indexOfFirstGame, indexOfLastGame);
 
   const paginate = (pageNumber: any) => {
+    history.push(`?page=${pageNumber}`);
     setCurrentPage(pageNumber);
   };
 
@@ -47,24 +48,24 @@ const Games = ({ location, history }: RouteComponentProps) => {
         </div>
       </h1>
       {isLoading && <Loader />}
-      <div className="cards-container">
-        {
+      {
           currentGames && (
             <>
-              {currentGames.map((game: IGame) => <Card key={game.id} game={game} />)}
+              <div className="cards-container">
+                {currentGames.map((game: IGame) => <Card key={game.id} game={game} />)}
+              </div>
               {!!currentGames.length
-                && (
-                <Pagination
-                  gamesPerPage={gamesPerPage}
-                  totalPosts={games?.length || 0}
-                  paginate={paginate}
-                  currentPage={currentPage}
-                />
-                )}
+              && (
+              <Pagination
+                gamesPerPage={gamesPerPage}
+                totalPosts={games?.length || 0}
+                paginate={paginate}
+                currentPage={currentPage}
+              />
+              )}
             </>
           )
           }
-      </div>
 
     </>
   );
