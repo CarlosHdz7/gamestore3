@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import './Login.scss';
 import useAuth from '../../../hooks/useAuth';
 import { ICredentials } from '../../../interfaces/ICredentials';
 
-const Login = ({ history }: { history: any}) => {
+const Login = ({ history }: RouteComponentProps) => {
   const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
   const { login } = useAuth();
 
-  const handleLoginClick = async (e: any) => {
+  const handleLoginClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     const { username, password } = formRef.current;
 
