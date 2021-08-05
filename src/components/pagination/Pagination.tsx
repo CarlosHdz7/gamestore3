@@ -5,10 +5,11 @@ import React, {
 import PropTypes from 'prop-types';
 
 import './Pagination.scss';
+import { IPagination } from '../../interfaces/IPagination';
 
 const Pagination = ({
   gamesPerPage, totalPosts, paginate, currentPage,
-}: any) => {
+}: IPagination) => {
   const [clickedId, setClickedId] = useState(1);
 
   const pageNumbers: Array<number> = [];
