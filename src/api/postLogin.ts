@@ -3,9 +3,10 @@
 
 import { ICredentials } from '../interfaces/ICredentials';
 import { IUser } from '../interfaces/IUser';
+import { THeaders } from '../types/THeaders';
 import { post } from './fetchInfo';
 
-export const postLogin = async (body : ICredentials, headers: any = {}) => {
+export const postLogin = async (body : ICredentials, headers: THeaders = {}) => {
   const user = await post<ICredentials, IUser>(
     `${process.env.REACT_APP_API_URL}/auth/local`,
     body,
