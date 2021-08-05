@@ -1,4 +1,4 @@
-import React, { useRef, MutableRefObject } from 'react';
+import React, { useRef, MutableRefObject, useState } from 'react';
 import _ from 'lodash';
 import { RouteComponentProps } from 'react-router-dom';
 import useFetchGames from '../../../hooks/useFetchGames';
@@ -6,12 +6,25 @@ import IGame from '../../../interfaces/IGame';
 import Card from '../../card';
 import Loader from '../../loader';
 import './Games.scss';
+import Pagination from '../../pagination/Pagination';
 
 const Games = ({ location, history }: RouteComponentProps) => {
+  const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
+
   const params = new URLSearchParams(location.search);
   const q = params.get('q') || '';
+  const page = params.get('page') || '1';
   const { isLoading, games } = useFetchGames(q);
-  const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
+
+  const [currentPage, setCurrentPage] = useState(parseInt(page, 10));
+  const [gamesPerPage] = useState(8);
+  const indexOfLastGame = currentPage * gamesPerPage;
+  const indexOfFirstGame = indexOfLastGame - gamesPerPage;
+  const currentGames = games?.slice(indexOfFirstGame, indexOfLastGame);
+
+  const paginate = (pageNumber: any) => {
+    setCurrentPage(pageNumber);
+  };
 
   const handleSearch = _.debounce(() => {
     const query = (inputRef.current.value) ? `?q=${inputRef.current.value}` : '?';
@@ -36,11 +49,23 @@ const Games = ({ location, history }: RouteComponentProps) => {
       {isLoading && <Loader />}
       <div className="cards-container">
         {
-          games && (
-            games.map((game: IGame) => <Card key={game.id} game={game} />)
+          currentGames && (
+            <>
+              {currentGames.map((game: IGame) => <Card key={game.id} game={game} />)}
+              {!!currentGames.length
+                && (
+                <Pagination
+                  gamesPerPage={gamesPerPage}
+                  totalPosts={games?.length || 0}
+                  paginate={paginate}
+                  currentPage={currentPage}
+                />
+                )}
+            </>
           )
-        }
+          }
       </div>
+
     </>
   );
 };

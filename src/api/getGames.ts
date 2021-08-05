@@ -5,8 +5,13 @@ import IGame from '../interfaces/IGame';
 import { get } from './fetchInfo';
 
 export const getGames = async (name: string = '') => {
+  let query = `${process.env.REACT_APP_API_URL}/games?`;
+  if (name) {
+    query += `name_contains=${name}`;
+  }
+
   const games = await get<Array<IGame>>(
-    `${process.env.REACT_APP_API_URL}/games?name_contains=${name}`,
+    query,
   );
   return games;
 };
