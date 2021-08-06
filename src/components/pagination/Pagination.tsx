@@ -10,7 +10,7 @@ import { IPagination } from '../../interfaces/IPagination';
 const Pagination = ({
   gamesPerPage, totalPosts, paginate, currentPage,
 }: IPagination) => {
-  const [clickedId, setClickedId] = useState(1);
+  const [clickedId, setClickedId] = useState(currentPage);
 
   const pageNumbers: Array<number> = [];
 

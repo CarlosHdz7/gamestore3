@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useRef, MutableRefObject, useState } from 'react';
 import _ from 'lodash';
 import { RouteComponentProps } from 'react-router-dom';
@@ -23,7 +24,10 @@ const Games = ({ location, history }: RouteComponentProps) => {
   const currentGames = games?.slice(indexOfFirstGame, indexOfLastGame);
 
   const paginate = (pageNumber: number) => {
-    history.push(`?page=${pageNumber}`);
+    (pageNumber === 1)
+      ? history.push('/games')
+      : history.push(`?page=${pageNumber}`);
+
     setCurrentPage(pageNumber);
   };
 
