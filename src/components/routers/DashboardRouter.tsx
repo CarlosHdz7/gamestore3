@@ -4,6 +4,7 @@ import {
   // Route,
   Redirect,
 } from 'react-router-dom';
+import Footer from '../footer';
 import Navbar from '../navbar';
 import Details from '../pages/details';
 import Error404 from '../pages/error404';
@@ -26,6 +27,7 @@ const DashboardRouter = () => (
         <Redirect to="/" />
       </Switch>
     </div>
+    <Footer />
   </>
 );
 

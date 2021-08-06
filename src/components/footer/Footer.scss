@@ -1,0 +1,13 @@
+@import '../../styles/Settings.scss';
+@import '../../styles/Common.scss';
+
+footer {
+  @include center-all;
+  background-color: $dark-purple-color;
+  bottom: 0;
+  color: $white-color;  
+  height: 50px;
+  left: 0;
+  position: fixed;
+  width: 100%;
+}
