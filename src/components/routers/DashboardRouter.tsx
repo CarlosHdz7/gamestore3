@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import Navbar from '../navbar';
 import Details from '../pages/details';
+import Error404 from '../pages/error404';
 import Games from '../pages/games';
 import Home from '../pages/home';
 import './AppRouter.scss';
@@ -18,6 +19,7 @@ const DashboardRouter = () => (
     <Navbar />
     <div className="container">
       <Switch>
+        <PublicRoute restricted={false} component={Error404} path={routesPath.ERROR} exact />
         <PublicRoute restricted={false} component={Home} path={routesPath.HOME} exact />
         <PublicRoute restricted={false} component={Games} path={routesPath.GAMES} exact />
         <PrivateRoute component={Details} path={routesPath.DETAILS} exact />

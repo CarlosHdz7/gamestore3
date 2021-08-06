@@ -5,5 +5,6 @@ export enum routesPath {
   HOME = '/',
   GAMES = '/games',
   DETAILS = '/games/:id',
-  LOGIN = '/login'
+  LOGIN = '/login',
+  ERROR = '/404'
 }
