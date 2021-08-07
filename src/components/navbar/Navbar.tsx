@@ -15,8 +15,8 @@ const Navbar = () => {
   const storedValue = getUser();
 
   const showSideBar = () => setSideBar(!sidebar);
-  const logoutUser = () => {
-    logout('user');
+  const logoutUser = async () => {
+    await logout('user');
     history.push('/login');
   };
 
@@ -58,14 +58,26 @@ const Navbar = () => {
           <button type="button" className="nav-text--button" onClick={showSideBar}>
             <i className="bi bi-x-lg" />
           </button>
-          {SideBarOptions.map((item) => (
-            <li className="nav-text" key={item.id} onClick={showSideBar}>
-              <Link to={item.path}>
-                <i className={item.icon} />
-                <span>{item.title}</span>
-              </Link>
-            </li>
-          ))}
+          {SideBarOptions.map((item) => {
+            if (item.id === 3) {
+              return (
+                <li className="nav-text" key={item.id} onClick={(!storedValue) ? showSideBar : logoutUser}>
+                  <Link to={item.path}>
+                    <i className={item.icon} />
+                    <span>{ (!storedValue) ? item.title : 'Logout'}</span>
+                  </Link>
+                </li>
+              );
+            }
+            return (
+              <li className="nav-text" key={item.id} onClick={showSideBar}>
+                <Link to={item.path}>
+                  <i className={item.icon} />
+                  <span>{item.title}</span>
+                </Link>
+              </li>
+            );
+          })}
 
         </ul>
       </nav>
