@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import './Card.scss';
 import { Link } from 'react-router-dom';
 import IGame from '../../interfaces/IGame';
+import './Card.scss';
 
 const Card = ({ game }: {game: IGame}) => {
   const {

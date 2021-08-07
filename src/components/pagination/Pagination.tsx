@@ -3,9 +3,9 @@ import React, {
   useCallback, useState, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
+import { IPagination } from '../../interfaces/IPagination';
 
 import './Pagination.scss';
-import { IPagination } from '../../interfaces/IPagination';
 
 const Pagination = ({
   gamesPerPage, totalPosts, paginate, currentPage,

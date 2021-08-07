@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useParams, RouteComponentProps } from 'react-router-dom';
+
 import { postComment } from '../../../api/postComment';
 import useAuth from '../../../hooks/useAuth';
 import useFetchComments from '../../../hooks/useFetchComments';
@@ -7,6 +8,7 @@ import useFetchGameById from '../../../hooks/useFetchGame';
 import Breadcrumb from '../../breadcrumb';
 import Comments from '../../comments';
 import Loader from '../../loader';
+
 import './Details.scss';
 
 const Details = ({ history }: RouteComponentProps) => {

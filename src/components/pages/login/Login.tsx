@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import './Login.scss';
+
 import useAuth from '../../../hooks/useAuth';
 import { ICredentials } from '../../../interfaces/ICredentials';
+
+import './Login.scss';
 
 const Login = ({ history }: RouteComponentProps) => {
   const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;

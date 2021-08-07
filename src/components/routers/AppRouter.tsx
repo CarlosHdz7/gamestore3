@@ -3,11 +3,13 @@ import {
   BrowserRouter as Router,
   Switch,
 } from 'react-router-dom';
+
 import Login from '../pages/login';
-import './AppRouter.scss';
 import DashboardRouter from './DashboardRouter';
 import PublicRoute from './PublicRoute';
 import { routesPath } from './routes';
+
+import './AppRouter.scss';
 
 const AppRouter = () => (
   <Router>

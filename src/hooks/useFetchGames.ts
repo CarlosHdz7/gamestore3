@@ -1,6 +1,7 @@
 import {
   useEffect, Reducer, useReducer, useRef,
 } from 'react';
+
 import { Actions, StateFetch, fetchActions } from '../reducers/fetchReducer/actions';
 import fetchReducer from '../reducers/fetchReducer';
 import { getGames } from '../api/getGames';

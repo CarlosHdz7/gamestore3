@@ -2,12 +2,14 @@
 import React, { useRef, MutableRefObject, useState } from 'react';
 import _ from 'lodash';
 import { RouteComponentProps } from 'react-router-dom';
+
 import useFetchGames from '../../../hooks/useFetchGames';
 import IGame from '../../../interfaces/IGame';
 import Card from '../../card';
 import Loader from '../../loader';
-import './Games.scss';
 import Pagination from '../../pagination/Pagination';
+
+import './Games.scss';
 
 const Games = ({ location, history }: RouteComponentProps) => {
   const inputRef = useRef() as MutableRefObject<HTMLInputElement>;

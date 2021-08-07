@@ -1,6 +1,7 @@
 import {
   useEffect, useReducer, Reducer, useRef,
 } from 'react';
+
 import { Actions, StateFetch, fetchActions } from '../reducers/fetchReducer/actions';
 import fetchReducer from '../reducers/fetchReducer';
 import { getComments } from '../api/getComments';
