@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { Actions, StateFetch, fetchActions } from '../reducers/fetchReducer/actions';
 import fetchReducer from '../reducers/fetchReducer';
-import { getComments } from '../api/getComments';// import IGame from '../interfaces/IGame';
+import { getComments } from '../api/getComments';
 import { IComment } from '../interfaces/IComment';
 
 const initialState: StateFetch<Array<IComment>> = {

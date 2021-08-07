@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { Actions, StateFetch, fetchActions } from '../reducers/fetchReducer/actions';
 import fetchReducer from '../reducers/fetchReducer';
-import { getGameById } from '../api/getGameById';// import IGame from '../interfaces/IGame';
+import { getGameById } from '../api/getGameById';
 import IGame from '../interfaces/IGame';
 
 const initialState: StateFetch<IGame> = {

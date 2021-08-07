@@ -1,8 +1,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/prefer-default-export */
 
-// import { ICredentials } from '../interfaces/ICredentials';
-// import { IUser } from '../interfaces/IUser';
 import { IComment } from '../interfaces/IComment';
 import { TComment } from '../types/TComment';
 import { THeaders } from '../types/THeaders';

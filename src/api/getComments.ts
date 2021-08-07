@@ -3,7 +3,6 @@
 import _ from 'lodash';
 import { IComment } from '../interfaces/IComment';
 
-// import IGame from '../interfaces/IGame';
 import { get } from './fetchInfo';
 
 export const getComments = async (id: number) => {

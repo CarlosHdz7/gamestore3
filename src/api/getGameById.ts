@@ -1,7 +1,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/prefer-default-export */
 
-// import IGame from '../interfaces/IGame';
 import IGame from '../interfaces/IGame';
 import { get } from './fetchInfo';
 
