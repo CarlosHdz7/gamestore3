@@ -10,7 +10,7 @@ import Loader from '../../loader';
 import './Details.scss';
 
 const Details = () => {
-  const { id }: { id: string } = useParams(); // game id
+  const { id }: { id: string } = useParams();
   const [inputComment, setInputComment] = useState('');
   const { isLoading, game } = useFetchGameById(id);
   const {
