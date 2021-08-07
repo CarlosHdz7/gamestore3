@@ -12,7 +12,7 @@ import { routesPath } from './routes';
 const AppRouter = () => (
   <Router>
     <Switch>
-      <PublicRoute restricted={false} component={Login} path={routesPath.LOGIN} exact />
+      <PublicRoute restricted component={Login} path={routesPath.LOGIN} exact />
       <PublicRoute restricted={false} component={DashboardRouter} path={routesPath.HOME} />
     </Switch>
   </Router>
