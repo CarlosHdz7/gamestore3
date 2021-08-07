@@ -8,7 +8,7 @@ import { IUser } from '../interfaces/IUser';
 const useAuth = () => {
   const { getValue, setValue, deleteValue } = useLocalStorage<IUser>(false);
 
-  const getUser = () => getValue('user');
+  const getUser = (): IUser => getValue('user');
 
   const login = async (credentials: ICredentials) => {
     const user = await postLogin(credentials);

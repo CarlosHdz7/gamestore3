@@ -19,7 +19,7 @@ const Details = () => {
   const { getUser } = useAuth();
   const storedValue = getUser();
 
-  const handleInputChange = useCallback((e) => {
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputComment(e.target.value);
   }, [id]);
 
@@ -92,7 +92,7 @@ const Details = () => {
                   <p className="comments-container__title">Write a comment:</p>
                   <textarea
                     className="comments-container__textarea"
-                    onChange={handleInputChange}
+                    onChange={(e) => handleInputChange(e)}
                     value={inputComment}
                   />
                   <div className="comments-container-button">
