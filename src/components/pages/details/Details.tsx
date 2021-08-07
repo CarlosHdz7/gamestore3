@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, RouteComponentProps } from 'react-router-dom';
 import { postComment } from '../../../api/postComment';
 import useAuth from '../../../hooks/useAuth';
 import useFetchComments from '../../../hooks/useFetchComments';
@@ -9,7 +9,7 @@ import Comments from '../../comments';
 import Loader from '../../loader';
 import './Details.scss';
 
-const Details = () => {
+const Details = ({ history }: RouteComponentProps) => {
   const { id }: { id: string } = useParams();
   const [inputComment, setInputComment] = useState('');
   const { isLoading, game } = useFetchGameById(id);
@@ -29,16 +29,12 @@ const Details = () => {
       body: inputComment,
     };
 
-    const headers = {
-      Authorization: `Bearer ${storedValue.jwt}`,
-    };
-
     try {
-      await postComment(id, comment, headers);
+      await postComment(id, comment);
       setInputComment('');
       getCommentsRefresh();
     } catch (errorMessage) {
-      console.log(errorMessage);
+      history.push('/');
     }
   };
 
