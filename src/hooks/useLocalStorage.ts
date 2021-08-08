@@ -1,4 +1,15 @@
-const useLocalStorage = <T>(initialValue: T | boolean = false) => {
+import { useState } from 'react';
+
+const useLocalStorage = <T>(initialValue: T | boolean = false, initialKey : string) => {
+  const [storedValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(initialKey);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      return initialValue;
+    }
+  });
+
   const getValue = (key: string) => {
     const item = window.localStorage.getItem(key);
     return item ? JSON.parse(item) : initialValue;
@@ -12,7 +23,9 @@ const useLocalStorage = <T>(initialValue: T | boolean = false) => {
     window.localStorage.removeItem(key);
   };
 
-  return { getValue, setValue, deleteValue };
+  return {
+    getValue, setValue, deleteValue, storedValue,
+  };
 };
 
 export default useLocalStorage;
