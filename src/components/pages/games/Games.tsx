@@ -34,7 +34,7 @@ const Games = ({ location, history }: RouteComponentProps) => {
   };
 
   const handleSearch = _.debounce(() => {
-    const query = (inputRef.current.value) ? `?q=${inputRef.current.value}` : '?';
+    const query = (inputRef.current.value) ? `?q=${inputRef.current.value}` : '/games';
     history.push(query);
   }, 1000);
 
