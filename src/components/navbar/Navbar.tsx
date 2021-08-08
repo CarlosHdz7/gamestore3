@@ -9,15 +9,22 @@ import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
   const [sidebar, setSideBar] = useState<boolean>(false);
+  const [containerState, setContainerState] = useState(true);
   const history = useHistory();
 
   const { getUser, logout } = useAuth();
   const storedValue = getUser();
 
   const showSideBar = () => setSideBar(!sidebar);
+
   const logoutUser = async () => {
     await logout('user');
     history.push('/login');
+  };
+
+  // eslint-disable-next-line no-unused-vars
+  const handleShowLogout = () => {
+    setContainerState(!containerState);
   };
 
   return (
@@ -30,7 +37,7 @@ const Navbar = () => {
           <Link className="navbar-container-item" to="/">
             GameStore
           </Link>
-          <div>
+          <div className="d-flex">
             <Link className="navbar-container-item" to="/games">
               Games
             </Link>
@@ -43,9 +50,28 @@ const Navbar = () => {
             }
             {
               storedValue && (
-                <button type="button" className="navbar-container-item--button" onClick={logoutUser}>
-                  Logout
-                </button>
+                <div className="userSession">
+                  <button
+                    type="button"
+                    className="navbar-options__item--button"
+                    onClick={handleShowLogout}
+                  >
+                    carlos-hernandez
+                    {' '}
+                    {(containerState) ? <i className="bi bi-caret-down-fill" /> : <i className="bi bi-caret-up-fill" />}
+                  </button>
+                  <div className={(containerState) ? 'logout-button-container d-none' : 'logout-button-container'}>
+                    <a
+                      href="/#"
+                      className="navbar-options__item logout-button"
+                      onClick={logoutUser}
+                    >
+                      <i className="bi bi-door-open-fill" />
+                      {' '}
+                      Logout
+                    </a>
+                  </div>
+                </div>
               )
             }
           </div>
