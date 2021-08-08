@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import SideBarOptions from './SidebarOptions';
 import './Navbar.scss';
 import useAuth from '../../hooks/useAuth';
+import SideButton from '../sideButton';
 
 const Navbar = () => {
   const [sidebar, setSideBar] = useState<boolean>(false);
@@ -84,27 +85,17 @@ const Navbar = () => {
           <button type="button" className="nav-text--button" onClick={showSideBar}>
             <i className="bi bi-x-lg" />
           </button>
-          {SideBarOptions.map((item) => {
-            if (item.id === 3) {
-              return (
-                <li className="nav-text" key={item.id} onClick={(!storedValue) ? showSideBar : logoutUser}>
-                  <Link to={item.path}>
-                    <i className={item.icon} />
-                    <span>{ (!storedValue) ? item.title : 'Logout'}</span>
-                  </Link>
-                </li>
-              );
-            }
-            return (
-              <li className="nav-text" key={item.id} onClick={showSideBar}>
-                <Link to={item.path}>
-                  <i className={item.icon} />
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
-
+          {SideBarOptions.map((item) => (
+            <SideButton
+              key={item.id}
+              id={item.id}
+              path={item.path}
+              title={item.title}
+              showSideBar={showSideBar}
+              logoutUser={logoutUser}
+              storedValue={storedValue}
+            />
+          ))}
         </ul>
       </nav>
     </>
