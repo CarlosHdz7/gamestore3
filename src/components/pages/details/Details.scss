@@ -65,6 +65,10 @@
   margin-top: 20px;
 }
 
+.comment__user{
+  color: $aqua-color;
+}
+
 .comments-container__title {
   color: $white-color;
   font-weight: map-get($font-weights, bold);
