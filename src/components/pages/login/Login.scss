@@ -8,8 +8,8 @@
 }
 
 .login-container{
-  padding-top:50px;
-  width: 900px;
+  padding:50px 20px 20px 20px;
+  max-width: 900px;
   margin: auto;
   display: grid;
   grid-template-columns: 8fr 4fr;
@@ -75,5 +75,13 @@
   .login-container{
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+  }
+
+  .login-container__welcome{
+    display: none;
+  }
+
+  .login-container{
+    padding:20px;
   }
 }

@@ -12,7 +12,7 @@
 }
 
 *{
-  // border:1px solid red;
+  border:1px solid red;
 }
 
 //navbar
@@ -169,4 +169,10 @@ span {
   width:100%;
   box-sizing: border-box;
   font-family : inherit;
+}
+
+@media (max-width: $tablet) {
+  .navbar-container-options {
+    display: none;
+  }
 }

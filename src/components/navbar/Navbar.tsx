@@ -80,7 +80,6 @@ const Navbar = () => {
       </div>
 
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-
         <ul className="nav-menu-items">
           <button type="button" className="nav-text--button" onClick={showSideBar}>
             <i className="bi bi-x-lg" />
