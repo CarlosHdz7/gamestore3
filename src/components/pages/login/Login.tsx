@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 import useAuth from '../../../hooks/useAuth';
@@ -8,6 +8,7 @@ import './Login.scss';
 
 const Login = ({ history }: RouteComponentProps) => {
   const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
+  const [error, setError] = useState(false);
   const { login } = useAuth();
 
   const handleLoginClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -22,8 +23,8 @@ const Login = ({ history }: RouteComponentProps) => {
     try {
       await login(credentials);
       history.push('/');
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      setError(true);
     }
   };
 
@@ -54,6 +55,7 @@ const Login = ({ history }: RouteComponentProps) => {
               className="form__input"
               name="password"
             />
+            {error && <p className="error-message">Invalid user or email</p>}
             <button className="form__button" type="submit" onClick={(e) => handleLoginClick(e)}>
               Log in
             </button>
