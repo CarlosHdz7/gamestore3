@@ -43,7 +43,7 @@ const Details = ({ history }: RouteComponentProps) => {
       {
         game && (
           <>
-            <Breadcrumb game={game.name} />
+            <Breadcrumb name={game.name} />
             <div className="details-container">
               <div className="container-img-cover">
                 <img
