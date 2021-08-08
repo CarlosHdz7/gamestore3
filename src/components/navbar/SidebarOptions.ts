@@ -11,13 +11,13 @@ const SideBarOptions = [
     id: 2,
     title: 'Games',
     path: routesPath.GAMES,
-    icon: 'bi bi-person-fill',
+    icon: 'bi bi-joystick',
   },
   {
     id: 3,
     title: 'Login',
     path: routesPath.LOGIN,
-    icon: 'bi bi-joystick',
+    icon: 'bi bi-person-fill',
   },
 ];
 

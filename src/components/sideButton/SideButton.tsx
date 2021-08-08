@@ -3,10 +3,11 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ISideButton } from '../../interfaces/ISideButton';
 
 const SideButton = ({
   id, path, icon, title, showSideBar, logoutUser, storedValue,
-}: any) => ((id === 3)
+}: ISideButton) => ((id === 3)
   ? (
     <li className="nav-text" key={id} onClick={(!storedValue) ? showSideBar : logoutUser}>
       <Link to={path}>

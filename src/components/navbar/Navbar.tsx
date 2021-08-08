@@ -88,6 +88,7 @@ const Navbar = () => {
             <SideButton
               key={item.id}
               id={item.id}
+              icon={item.icon}
               path={item.path}
               title={item.title}
               showSideBar={showSideBar}
