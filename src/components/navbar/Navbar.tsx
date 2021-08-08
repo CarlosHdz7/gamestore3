@@ -23,7 +23,6 @@ const Navbar = () => {
     history.push('/login');
   };
 
-  // eslint-disable-next-line no-unused-vars
   const handleShowLogout = () => {
     setContainerState(!containerState);
   };
