@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import { useParams, RouteComponentProps } from 'react-router-dom';
 
 import { postComment } from '../../../api/postComment';
-import useAuth from '../../../hooks/useAuth';
 import useFetchComments from '../../../hooks/useFetchComments';
 import useFetchGameById from '../../../hooks/useFetchGame';
 import Breadcrumb from '../../breadcrumb';
@@ -18,8 +17,6 @@ const Details = ({ history }: RouteComponentProps) => {
   const {
     isLoading: isLoadingComments, comments, error, getCommentsRefresh,
   } = useFetchComments(parseInt(id, 10));
-  const { getUser } = useAuth();
-  const storedValue = getUser();
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputComment(e.target.value);
@@ -83,28 +80,21 @@ const Details = ({ history }: RouteComponentProps) => {
                 </button>
               </div>
             </div>
-
-            {
-              storedValue && (
-                <>
-                  <p className="comments-container__title">Write a comment:</p>
-                  <textarea
-                    className="comments-container__textarea"
-                    onChange={(e) => handleInputChange(e)}
-                    value={inputComment}
-                  />
-                  <div className="comments-container-button">
-                    <button
-                      type="button"
-                      className="comment-button"
-                      onClick={handlePostComment}
-                    >
-                      Comment
-                    </button>
-                  </div>
-                </>
-              )
-            }
+            <p className="comments-container__title">Write a comment:</p>
+            <textarea
+              className="comments-container__textarea"
+              onChange={(e) => handleInputChange(e)}
+              value={inputComment}
+            />
+            <div className="comments-container-button">
+              <button
+                type="button"
+                className="comment-button"
+                onClick={handlePostComment}
+              >
+                Comment
+              </button>
+            </div>
           </>
         )
       }
