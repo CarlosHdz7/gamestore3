@@ -31,23 +31,23 @@ const Pagination = ({
     }, [gamesPerPage],
   );
 
-  const handlePrev = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handlePrev = useCallback((e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     const prevPage = currentPage - 1;
     if (prevPage > 0) {
       paginate(prevPage);
       setClickedId(prevPage);
     }
-  };
+  }, [currentPage]);
 
-  const handleNext = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleNext = useCallback((e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     const nextPage = currentPage + 1;
     if (nextPage <= pageNumbers.length) {
       paginate(nextPage);
       setClickedId(nextPage);
     }
-  };
+  }, [currentPage]);
 
   return (
     <nav className="pagination-container">
