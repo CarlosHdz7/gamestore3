@@ -30,3 +30,9 @@
   color: $white-color;
   font-weight: map-get($font-weights, bold);
 }
+
+.no-results {
+  text-align: center;
+  color: $white-color;
+  font-weight: map-get($font-weights, bold);
+}

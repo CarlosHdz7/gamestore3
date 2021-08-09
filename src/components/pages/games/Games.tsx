@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-expressions */
-import React, { useRef, MutableRefObject, useState } from 'react';
+import React, {
+  useRef, MutableRefObject, useState, useEffect,
+} from 'react';
 import _ from 'lodash';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -38,6 +40,10 @@ const Games = ({ location, history }: RouteComponentProps) => {
     history.push(query);
   }, 1000);
 
+  useEffect(() => {
+    inputRef.current.value = q;
+  }, [q]);
+
   return (
     <>
       <h1 className="title">
@@ -58,7 +64,9 @@ const Games = ({ location, history }: RouteComponentProps) => {
           currentGames && (
             <>
               <div className="cards-container">
-                {currentGames.map((game: IGame) => <Card key={game.id} game={game} />)}
+                {currentGames.length
+                  ? currentGames.map((game: IGame) => <Card key={game.id} game={game} />)
+                  : <p className="no-results">Result not found :(</p>}
               </div>
               {!!currentGames.length
               && (
