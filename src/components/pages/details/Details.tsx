@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { useParams, RouteComponentProps } from 'react-router-dom';
+import { useParams, RouteComponentProps, Redirect } from 'react-router-dom';
 
 import { postComment } from '../../../api/postComment';
 import useFetchComments from '../../../hooks/useFetchComments';
@@ -19,9 +19,9 @@ const Details = ({ history }: RouteComponentProps) => {
     isLoading: isLoadingComments, comments, error, getCommentsRefresh,
   } = useFetchComments(parseInt(id, 10));
 
-  if (errorGame) {
-    history.push('/404');
-  }
+  // if (errorGame) {
+  //   history.push('/404');
+  // }
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputComment(e.target.value);
@@ -44,6 +44,7 @@ const Details = ({ history }: RouteComponentProps) => {
 
   return (
     <div className="details-page-container">
+      {errorGame && <Redirect to="/404" />}
       {isLoading && <Loader />}
       {
         game && (
@@ -88,7 +89,7 @@ const Details = ({ history }: RouteComponentProps) => {
             <p className="comments-container__title">Write a comment:</p>
             <textarea
               className="comments-container__textarea"
-              onChange={(e) => handleInputChange(e)}
+              onChange={handleInputChange}
               value={inputComment}
             />
             <div className="comments-container-button">

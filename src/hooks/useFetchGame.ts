@@ -30,10 +30,12 @@ const useFetchGame = (id: string) => {
         }
       })
       .catch(() => {
-        dispatch({
-          type: Actions.SET_ERROR,
-          payload: { error: 'There was an error while loading the pokemon' },
-        });
+        if (isMounted.current) {
+          dispatch({
+            type: Actions.SET_ERROR,
+            payload: { error: 'There was an error while loading the game' },
+          });
+        }
       });
     return () => {
       isMounted.current = false;

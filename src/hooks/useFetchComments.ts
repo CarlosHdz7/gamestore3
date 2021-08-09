@@ -30,10 +30,12 @@ const useFetchComments = (id: number) => {
         }
       })
       .catch(() => {
-        dispatch({
-          type: Actions.SET_ERROR,
-          payload: { error: 'There was an error while loading the pokemon' },
-        });
+        if (isMounted.current) {
+          dispatch({
+            type: Actions.SET_ERROR,
+            payload: { error: 'There was an error while loading comments' },
+          });
+        }
       });
   };
 
