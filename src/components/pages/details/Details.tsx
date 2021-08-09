@@ -13,10 +13,15 @@ import './Details.scss';
 const Details = ({ history }: RouteComponentProps) => {
   const { id }: { id: string } = useParams();
   const [inputComment, setInputComment] = useState('');
-  const { isLoading, game } = useFetchGameById(id);
+  const { isLoading, game, error: errorGame } = useFetchGameById(id);
+
   const {
     isLoading: isLoadingComments, comments, error, getCommentsRefresh,
   } = useFetchComments(parseInt(id, 10));
+
+  if (errorGame) {
+    history.push('/404');
+  }
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputComment(e.target.value);
