@@ -35,6 +35,7 @@ const Details = ({ history }: RouteComponentProps) => {
       setInputComment('');
       getCommentsRefresh();
     } catch (errorMessage) {
+      console.log(errorMessage.message);
       history.push(routesPath.HOME);
     }
   };

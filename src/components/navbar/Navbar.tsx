@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const logoutUser = async () => {
     await logout('user');
-    history.push(routesPath.LOGIN);
+    history.push(routesPath.HOME);
   };
 
   const handleShowLogout = () => {

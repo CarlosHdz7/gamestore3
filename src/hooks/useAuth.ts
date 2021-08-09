@@ -5,7 +5,7 @@ import { ICredentials } from '../interfaces/ICredentials';
 import { IUser } from '../interfaces/IUser';
 
 const useAuth = () => {
-  const { getValue, setValue, deleteValue } = useLocalStorage<IUser>(false, 'user');
+  const { getValue, setValue, deleteValue } = useLocalStorage<IUser>(false);
 
   const getUser = (): IUser => getValue('user');
 
