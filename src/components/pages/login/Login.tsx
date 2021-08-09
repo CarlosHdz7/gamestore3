@@ -29,9 +29,18 @@ const Login = ({ history }: RouteComponentProps) => {
     }
   };
 
+  const handleRedirect = () => {
+    history.push(routesPath.HOME);
+  };
+
   return (
     <>
       <div className="login-page">
+        <div className="nav">
+          <button type="button" className="nav-button" onClick={handleRedirect}>
+            GameStore
+          </button>
+        </div>
         <div className="login-container">
           <div className="login-container__welcome">
             <h1>Hi! It’s nice to see you!</h1>

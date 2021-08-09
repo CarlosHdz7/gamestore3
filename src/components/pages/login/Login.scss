@@ -1,6 +1,19 @@
 @import '../../../styles/settings.scss';
 @import '../../../styles/common.scss';
 
+.nav{
+  color:$white-color;
+  padding: 20px 20px;
+}
+
+.nav-button{
+  background-color: $dark-purple-color2;
+  color: $white-color;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .login-page{
   background-color: $dark-purple-color2;
   width: 100%;
