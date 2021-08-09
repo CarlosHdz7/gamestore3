@@ -5,6 +5,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ISideButton } from '../../interfaces/ISideButton';
 
+import './SideButton.scss';
+
 const SideButton = ({
   id, path, icon, title, showSideBar, logoutUser, storedValue,
 }: ISideButton) => ((id === 3)
