@@ -12,16 +12,16 @@ const Pagination = ({
 }: IPagination) => {
   const [clickedId, setClickedId] = useState(currentPage);
 
-  const pageNumbers: Array<number> = [];
-
   const calculateTotalPages = () => Math.ceil(totalPosts / gamesPerPage);
   const totalPages = useMemo(() => calculateTotalPages(), [totalPosts, gamesPerPage]);
 
-  const calculatePages = () => {
+  const pageNumbers = useMemo(() => {
+    const pages: Array<number> = [];
     for (let i = 1; i <= totalPages; i += 1) {
-      pageNumbers.push(i);
+      pages.push(i);
     }
-  };
+    return pages;
+  }, [totalPages]);
 
   const handlePaginate = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, number: number) => {
@@ -48,8 +48,6 @@ const Pagination = ({
       setClickedId(nextPage);
     }
   };
-
-  calculatePages();
 
   return (
     <nav className="pagination-container">

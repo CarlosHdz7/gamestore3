@@ -11,7 +11,7 @@ import { routesPath } from '../routers/routes';
 
 const Navbar = () => {
   const [sidebar, setSideBar] = useState<boolean>(false);
-  const [containerState, setContainerState] = useState(true);
+  const [containerState, setContainerState] = useState<boolean>(true);
   const history = useHistory();
 
   const { getUser, logout } = useAuth();
