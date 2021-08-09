@@ -5,7 +5,7 @@ import useAuth from '../hooks/useAuth';
 import { IComment } from '../interfaces/IComment';
 import { TComment } from '../types/TComment';
 import { THeaders } from '../types/THeaders';
-import { post } from './fetchInfo';
+import { post, getConfig } from './fetchInfo';
 
 export const postComment = async (id: string, body : TComment) => {
   const { getUser } = useAuth();
@@ -15,20 +15,12 @@ export const postComment = async (id: string, body : TComment) => {
     Authorization: `Bearer ${storedValue.jwt}`,
   };
 
+  const config = getConfig(headers);
+
   const comment = await post<TComment, IComment>(
     `${process.env.REACT_APP_API_URL}/games/${id}/comment`,
     body,
-    {
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json',
-        ...headers,
-      },
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
-    },
+    config,
   );
   return comment;
 };
