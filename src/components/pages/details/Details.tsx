@@ -7,6 +7,7 @@ import useFetchGameById from '../../../hooks/useFetchGame';
 import Breadcrumb from '../../breadcrumb';
 import Comments from '../../comments';
 import Loader from '../../loader';
+import { routesPath } from '../../routers/routes';
 
 import './Details.scss';
 
@@ -18,10 +19,6 @@ const Details = ({ history }: RouteComponentProps) => {
   const {
     isLoading: isLoadingComments, comments, error, getCommentsRefresh,
   } = useFetchComments(parseInt(id, 10));
-
-  // if (errorGame) {
-  //   history.push('/404');
-  // }
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputComment(e.target.value);
@@ -44,7 +41,7 @@ const Details = ({ history }: RouteComponentProps) => {
 
   return (
     <div className="details-page-container">
-      {errorGame && <Redirect to="/404" />}
+      {errorGame && <Redirect to={routesPath.GAMES} />}
       {isLoading && <Loader />}
       {
         game && (
