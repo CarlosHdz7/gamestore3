@@ -169,12 +169,15 @@ span {
 }
 
 .logout-button{
+  text-align: start;
   padding:10px;
   display: inline-block;
   cursor: pointer;
   width:100%;
   box-sizing: border-box;
   font-family : inherit;
+  border: none;
+  background-color: $purple-color;
 }
 
 @media (max-width: $tablet) {

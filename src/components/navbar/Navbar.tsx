@@ -7,7 +7,6 @@ import sideBarOptions from './sidebarOptions';
 import './Navbar.scss';
 import useAuth from '../../hooks/useAuth';
 import SideButton from '../sideButton';
-import { routesPath } from '../routers/routes';
 
 const Navbar = () => {
   const [sidebar, setSideBar] = useState<boolean>(false);
@@ -21,7 +20,7 @@ const Navbar = () => {
 
   const logoutUser = async () => {
     await logout('user');
-    history.push(routesPath.HOME);
+    history.push('/login');
   };
 
   const handleShowLogout = () => {
@@ -62,15 +61,15 @@ const Navbar = () => {
                     {(containerState) ? <i className="bi bi-caret-down-fill" /> : <i className="bi bi-caret-up-fill" />}
                   </button>
                   <div className={(containerState) ? 'logout-button-container d-none' : 'logout-button-container'}>
-                    <a
-                      href="/#"
+                    <button
+                      type="button"
                       className="navbar-options__item logout-button"
                       onClick={logoutUser}
                     >
                       <i className="bi bi-door-open-fill" />
                       {' '}
                       Logout
-                    </a>
+                    </button>
                   </div>
                 </div>
               )

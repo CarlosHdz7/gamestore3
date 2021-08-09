@@ -15,7 +15,7 @@ const useAuth = () => {
   };
 
   const logout = async (key: string) => {
-    deleteValue(key);
+    await deleteValue(key);
   };
 
   return { getUser, login, logout };
