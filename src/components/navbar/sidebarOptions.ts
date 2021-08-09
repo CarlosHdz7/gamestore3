@@ -1,6 +1,6 @@
 import { routesPath } from '../routers/routes';
 
-const SideBarOptions = [
+const sideBarOptions = [
   {
     id: 1,
     title: 'Home',
@@ -21,4 +21,4 @@ const SideBarOptions = [
   },
 ];
 
-export default SideBarOptions;
+export default sideBarOptions;

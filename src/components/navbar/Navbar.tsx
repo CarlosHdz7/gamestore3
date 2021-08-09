@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import SideBarOptions from './SidebarOptions';
+import sideBarOptions from './sidebarOptions';
 import './Navbar.scss';
 import useAuth from '../../hooks/useAuth';
 import SideButton from '../sideButton';
@@ -84,7 +84,7 @@ const Navbar = () => {
           <button type="button" className="nav-text--button" onClick={showSideBar}>
             <i className="bi bi-x-lg" />
           </button>
-          {SideBarOptions.map((item) => (
+          {sideBarOptions.map((item) => (
             <SideButton
               key={item.id}
               id={item.id}
