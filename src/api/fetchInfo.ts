@@ -1,7 +1,7 @@
 import { THeaders } from '../types/THeaders';
 
 /* eslint-disable no-undef */
-function getConfig(headers: THeaders): RequestInit {
+function getConfig(headers?: THeaders): RequestInit {
   return {
     mode: 'cors',
     cache: 'no-cache',

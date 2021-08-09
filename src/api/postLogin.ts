@@ -4,23 +4,15 @@
 import { ICredentials } from '../interfaces/ICredentials';
 import { IUser } from '../interfaces/IUser';
 import { THeaders } from '../types/THeaders';
-import { post } from './fetchInfo';
+import { post, getConfig } from './fetchInfo';
 
 export const postLogin = async (body : ICredentials, headers: THeaders = {}) => {
+  const config = getConfig(headers);
+
   const user = await post<ICredentials, IUser>(
     `${process.env.REACT_APP_API_URL}/auth/local`,
     body,
-    {
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json',
-        ...headers,
-      },
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
-    },
+    config,
   );
   return user;
 };
