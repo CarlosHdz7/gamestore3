@@ -7,6 +7,7 @@ import SideBarOptions from './SidebarOptions';
 import './Navbar.scss';
 import useAuth from '../../hooks/useAuth';
 import SideButton from '../sideButton';
+import { routesPath } from '../routers/routes';
 
 const Navbar = () => {
   const [sidebar, setSideBar] = useState<boolean>(false);
@@ -20,7 +21,7 @@ const Navbar = () => {
 
   const logoutUser = async () => {
     await logout('user');
-    history.push('/login');
+    history.push(routesPath.LOGIN);
   };
 
   const handleShowLogout = () => {

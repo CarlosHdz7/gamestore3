@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 
 import useAuth from '../../../hooks/useAuth';
 import { ICredentials } from '../../../interfaces/ICredentials';
+import { routesPath } from '../../routers/routes';
 
 import './Login.scss';
 
@@ -22,7 +23,7 @@ const Login = ({ history }: RouteComponentProps) => {
 
     try {
       await login(credentials);
-      history.push('/');
+      history.push(routesPath.HOME);
     } catch (err) {
       setError(true);
     }

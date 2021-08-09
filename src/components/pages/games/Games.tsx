@@ -12,6 +12,7 @@ import Loader from '../../loader';
 import Pagination from '../../pagination/Pagination';
 
 import './Games.scss';
+import { routesPath } from '../../routers/routes';
 
 const Games = ({ location, history }: RouteComponentProps) => {
   const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
@@ -29,7 +30,7 @@ const Games = ({ location, history }: RouteComponentProps) => {
 
   const paginate = (pageNumber: number) => {
     (pageNumber === 1)
-      ? history.push('/games')
+      ? history.push(routesPath.GAMES)
       : history.push(`?page=${pageNumber}`);
 
     setCurrentPage(pageNumber);
